@@ -6,14 +6,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vehicles implements VehicleRepositories {
-    public List<Vehicle> vehicles = new ArrayList<>();
-    public long count;
+    private List<Vehicle> vehicles = new ArrayList<>();
+    private int count;
+    private int generateId ;
 
 
     @Override
     public Vehicle save(Vehicle vehicle) {
-        vehicles.add(vehicle);
-        count++;
+
+        if (vehicle.getId() == 0) {
+            vehicle.setId(generateId());
+            vehicles.add(vehicle);
+            count++;
+        }
+        else{
+        for (Vehicle vehicle2 : vehicles) {
+            if (vehicle.getId() == vehicle2.getId()) {
+                vehicle2 = vehicle;
+                break;
+            }
+        }
+
+        }
+
         return vehicle;
     }
 
@@ -41,7 +56,7 @@ public class Vehicles implements VehicleRepositories {
             }
 
         }
-        return null;
+        throw new IllegalArgumentException("Vehicle with id " + id + " not found");
     }
 
     @Override
@@ -60,7 +75,19 @@ public class Vehicles implements VehicleRepositories {
     }
 
     @Override
-    public void deleteAll() {
+    public double deleteAll() {
         vehicles.clear();
+        return 0;
     }
+
+    public int generateId() {
+        generateId++;
+        return generateId;
+    }
+
+    @Override
+    public String toString() {
+        return  "vehicles =" + vehicles ;
+    }
+
 }

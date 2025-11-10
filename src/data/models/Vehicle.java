@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vehicle {
-    private int id;
+
+    private int id ;
     public String name;
     public String model;
     public String color;
@@ -15,6 +16,7 @@ public class Vehicle {
     public Year year;
     public List<Ticket> tickets = new ArrayList<>();
     public Owner owner;
+
 
     public Year getYear() {
         return year;
@@ -72,8 +74,10 @@ public class Vehicle {
         this.owner = owner;
     }
 
-    public long getId() {
-        Vehicles vehicle = new Vehicles();
-        return vehicle.count();
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
     }
 }
