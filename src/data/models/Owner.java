@@ -1,27 +1,27 @@
 package data.models;
 
 public class Owner {
-    public String name;
+    public String ownerName;
     public String address;
     public String phone;
     public String gender;
     public String email;
     public String id;
 
-    public Owner(String name, String address, String phone, String gender, String email, String id) {
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
-        this.gender = gender;
-        this.email = email;
-        this.id = id;
-    }
+//    public Owner(String name, String address, String phone, String gender, String email, String id) {
+//        this.ownerName = name;
+//        this.address = address;
+//        this.phone = phone;
+//        this.gender = gender;
+//        this.email = email;
+//        this.id = id;
+//    }
     public String getName() {
-        return name;
+        return ownerName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.ownerName = name;
     }
 
     public String getAddress() {

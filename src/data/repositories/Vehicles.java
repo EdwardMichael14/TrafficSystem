@@ -1,13 +1,14 @@
 package data.repositories;
 
 import data.models.Vehicle;
+import dtos.requests.RegisterVehicleRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Vehicles implements VehicleRepositories {
-    private List<Vehicle> vehicles = new ArrayList<>();
-    private int count;
+    private static List<Vehicle> vehicles = new ArrayList<>();
+    private static int count;
     private int generateId ;
 
 
@@ -52,7 +53,6 @@ public class Vehicles implements VehicleRepositories {
         for (Vehicle vehicle : vehicles) {
             if(vehicle.getId() == id) {
                 return vehicle;
-
             }
 
         }
@@ -71,13 +71,13 @@ public class Vehicles implements VehicleRepositories {
                 vehicles.remove(vehicle);
             }
         }
-
+            count --;
     }
 
     @Override
-    public double deleteAll() {
+    public void deleteAll() {
         vehicles.clear();
-        return 0;
+        count = 0;
     }
 
     public int generateId() {
@@ -85,9 +85,18 @@ public class Vehicles implements VehicleRepositories {
         return generateId;
     }
 
-    @Override
-    public String toString() {
-        return  "vehicles =" + vehicles ;
+    public Vehicle findByChasisNumber(String chasisNumber) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getChasisNumber().equals(chasisNumber)) {
+                return vehicle;
+            }
+        }
+        return null;
     }
+
+//    @Override
+//    public String toString() {
+//        return null;
+//    }
 
 }

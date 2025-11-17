@@ -9,8 +9,9 @@ public interface VehicleRepositories {
     Vehicle findById(int id);
     List<Vehicle> findAll();
     void deleteById(int id);
-    double deleteAll();
+    void deleteAll();
     void delete(Vehicle vehicle);
     long count();
+    Vehicle findByChasisNumber(String chasisNumber);
 
 }

@@ -16,6 +16,7 @@ public class Vehicle {
     public Year year;
     public List<Ticket> tickets = new ArrayList<>();
     public Owner owner;
+    public String chasisNumber;
 
 
     public Year getYear() {
@@ -79,5 +80,13 @@ public class Vehicle {
     }
     public int getId() {
         return id;
+    }
+
+    public String getChasisNumber() {
+        return chasisNumber;
+    }
+
+    public void setChasisNumber(String chasisNumber) {
+        this.chasisNumber = chasisNumber;
     }
 }

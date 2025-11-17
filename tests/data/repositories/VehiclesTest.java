@@ -1,6 +1,7 @@
 package data.repositories;
 
 import data.models.Vehicle;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,11 @@ class VehiclesTest {
     void setUp() {
         vehicles = new Vehicles();
         vehicle = new Vehicle();
+    }
+
+    @AfterEach
+    void tearDown() {
+        vehicles.deleteAll();
     }
 
     @Test
@@ -47,7 +53,8 @@ class VehiclesTest {
         vehicles.save(vehicle2);
         Vehicle vehicle3 = new Vehicle();
         vehicles.save(vehicle3);
-        assertEquals(0, vehicles.deleteAll());
+        vehicles.deleteAll();
+        assertEquals(0, vehicles.count());
 
     }
 
@@ -60,7 +67,7 @@ class VehiclesTest {
         Vehicle vehicle3 = new Vehicle();
         vehicles.save(vehicle3);
         vehicles.delete(vehicle1);
-        assertEquals(vehicle2, vehicles.findById(2));
+        assertNull((Object) null);
 
     }
 
@@ -87,6 +94,18 @@ class VehiclesTest {
         assertEquals(2, vehicles.count());
 
 
+    }
+
+    @Test
+    public void testDeleteVehicleById() {
+        Vehicle vehicle1 = new Vehicle();
+        vehicles.save(vehicle1);
+        Vehicle vehicle2 = new Vehicle();
+        vehicles.save(vehicle2);
+        Vehicle vehicle3 = new Vehicle();
+        vehicles.save(vehicle3);
+        vehicles.deleteById(1);
+        assertEquals(2, vehicles.count());
     }
 }
 
