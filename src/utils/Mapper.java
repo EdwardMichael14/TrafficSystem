@@ -39,8 +39,6 @@ public class Mapper {
         return officer;
     }
 
-    public static Ticket map(IssueTicketRequest request){
 
-    }
 
 }

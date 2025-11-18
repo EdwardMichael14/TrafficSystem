@@ -1,10 +1,13 @@
 package services;
 
 import dtos.requests.IssueTicketRequest;
-import dtos.responses.IssueTIcketResponse;
+import dtos.requests.SettleTicketRequest;
+import dtos.responses.IssueTicketResponse;
+import dtos.responses.SettleTicketResponse;
 
 public interface TicketServices {
 
-    IssueTIcketResponse issueTicket(IssueTicketRequest request);
+    IssueTicketResponse issueTicket(IssueTicketRequest request);
+    SettleTicketResponse settleTicket(SettleTicketRequest request);
 
 }

@@ -1,5 +1,6 @@
 package data.repositories;
 
+import data.models.Ticket;
 import data.models.Vehicle;
 import dtos.requests.RegisterVehicleRequest;
 
@@ -10,6 +11,7 @@ public class Vehicles implements VehicleRepositories {
     private static List<Vehicle> vehicles = new ArrayList<>();
     private static int count;
     private int generateId ;
+
 
 
     @Override

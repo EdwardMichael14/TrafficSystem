@@ -15,6 +15,7 @@ class TicketServicesImplTest {
     private VehicleServiceImpl vehicleService;
     private OfficerServicesImpl officerServices;
     private TicketRepository ticketRepository;
+    private OfficerRepository officerRepository;
 
     @BeforeEach
     void setUp() {
@@ -22,11 +23,13 @@ class TicketServicesImplTest {
         vehicleService = new VehicleServiceImpl();
         officerServices = new OfficerServicesImpl();
         ticketRepository = new Tickets();
+        officerRepository = new Officers();
     }
 
     @AfterEach
     void tearDown() {
         ticketRepository.deleteAll();
+        officerRepository.deleteAll();
     }
 
     @Test
@@ -57,15 +60,13 @@ class TicketServicesImplTest {
         officerServices.registerOfficer(request1);
 
         IssueTicketRequest request2 = new IssueTicketRequest();
-        request2.setOfficerEmail("adewale");
+        request2.setOfficerEmail("un_registerdOfficer");
         request2.setOffence("ONE_WAY");
         request2.setVehicleId(2);
 
-        ticketServices.issueTicket(request2);
+//        ticketServices.issueTicket(request2);
         assertThrows(IllegalArgumentException.class, () ->  ticketServices.issueTicket(request2) );
     }
-
-
 
 
 

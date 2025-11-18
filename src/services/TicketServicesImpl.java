@@ -6,7 +6,9 @@ import data.models.Ticket;
 import data.models.Vehicle;
 import data.repositories.*;
 import dtos.requests.IssueTicketRequest;
-import dtos.responses.IssueTIcketResponse;
+import dtos.requests.SettleTicketRequest;
+import dtos.responses.IssueTicketResponse;
+import dtos.responses.SettleTicketResponse;
 
 public class TicketServicesImpl implements TicketServices {
     private final VehicleRepositories vehicleRepositories = new Vehicles();
@@ -14,7 +16,7 @@ public class TicketServicesImpl implements TicketServices {
     private final TicketRepository ticketRepository = new Tickets();
 
     @Override
-    public IssueTIcketResponse issueTicket(IssueTicketRequest request) {
+    public IssueTicketResponse issueTicket(IssueTicketRequest request) {
 
         Officer officer = officerRepository.findByEmail(request.getOfficerEmail());
         if(officer == null) {
@@ -32,6 +34,20 @@ public class TicketServicesImpl implements TicketServices {
         ticketRepository.save(ticket);
         vehicle.getTickets().add(ticket);
         vehicleRepositories.save(vehicle);
+        return null;
+    }
+
+    @Override
+    public SettleTicketResponse settleTicket(SettleTicketRequest request) {
+        Ticket foundTicket = ticketRepository.findById(request.getTicketId());
+        if(foundTicket == null) {
+            throw new IllegalArgumentException("Ticket not found");
+        }
+        if(foundTicket.getOffence().price != request.getOffenceFee()){
+            throw new IllegalArgumentException("Offence price not match");
+        }
+        foundTicket.setHasPaid(true);
+        ticketRepository.save(foundTicket);
         return null;
     }
 

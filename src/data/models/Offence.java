@@ -2,10 +2,10 @@ package data.models;
 
 public enum Offence {
 
-    ONE_WAY(40.00),
-    DRUNK_DRIVING(70.00),
+    ONE_WAY(40_00),
+    DRUNK_DRIVING(70_00),
     NO_SEAT_BELT(100),
-    OVER_SPEEDING(80.00);
+    OVER_SPEEDING(80_00);
 
     public double price;
 

@@ -8,10 +8,10 @@ import dtos.responses.RegisterOfficerResponse;
 
 import static utils.Mapper.map;
 
-public class OfficerServicesImpl implements OfficerServices {
+public class OfficerServicesImpl extends VehicleServiceImpl implements OfficerServices {
     private OfficerRepository officers = new Officers();
-    @Override
 
+    @Override
     public RegisterOfficerResponse registerOfficer(RegisterOfficerRequest request) {
         Officer officer = map(request);
 
@@ -20,4 +20,5 @@ public class OfficerServicesImpl implements OfficerServices {
         officers.save(officer);
         return new RegisterOfficerResponse();
     }
+
 }
