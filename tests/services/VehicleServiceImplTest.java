@@ -1,7 +1,6 @@
 package services;
 
 import data.repositories.VehicleRepositories;
-import data.repositories.Vehicles;
 import dtos.requests.RegisterVehicleRequest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

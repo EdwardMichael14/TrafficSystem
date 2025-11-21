@@ -1,22 +1,26 @@
 package data.repositories;
 
-import data.models.Ticket;
-import data.models.Vehicle;
+import LastMa.data.models.Ticket;
+import LastMa.data.repositories.TicketRepository;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TicketsTest {
 
+    @Autowired
     private TicketRepository tickets;
     private Ticket ticket;
 
+
     @BeforeEach
     void setUp() {
-        tickets = new Tickets();
         ticket = new Ticket();
+//        ticket = new Ticket();
     }
 
     @AfterEach

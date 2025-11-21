@@ -1,8 +1,6 @@
 package services;
 
-import data.models.Officer;
 import data.repositories.OfficerRepository;
-import data.repositories.Officers;
 import dtos.requests.RegisterOfficerRequest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
